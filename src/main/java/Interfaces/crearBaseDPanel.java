@@ -5,7 +5,7 @@
  */
 package Interfaces;
 
-import Clases.BaseDatos;
+import Clases.BD;
 import Clases.ManejoDatos;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,16 +19,32 @@ import java.util.logging.Logger;
 public class crearBaseDPanel extends javax.swing.JPanel {
 
     ManejoDatos md = new ManejoDatos();
-    ArrayList<BaseDatos> bds = new ArrayList<>();
+    ArrayList<BD> bds = new ArrayList<>();
+    BD bd;
+    int ultimaID;
+    int cont;
+    int nuevoCont;
     
     public crearBaseDPanel() {
         initComponents();
-        try {
+        
+            try {
             bds = md.leerDatosBD();
+            ultimaID = bds.size();
+            BD bd1 = bds.get(ultimaID - 1);
+            cont = bd1.getId();
+            if(cont == -1){nuevoCont=+2;}
+            else
+            nuevoCont = cont + 1;
         } catch (IOException ex) {
             Logger.getLogger(crearBaseDPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error en metodo \"leerDatosBD\"");
+            nuevoCont=0;
         }
+        
+        
+        
+        
     }
 
     /**
@@ -109,29 +125,26 @@ public class crearBaseDPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
-        
-        
-        String nombre,desc;
-        
+
+        String nombre, desc;
+
         nombre = nombreTF.getText();
         desc = descTF.getText();
+        int id = nuevoCont+1;
         
-        BaseDatos bd = new BaseDatos(nombre, desc);
-        
+        bd = new BD(id,nombre, desc);
+        bd.setId(nuevoCont);
+
         bds.add(bd);
-        
+
         try {
             md.guardarDatosBD(bds);
         } catch (IOException ex) {
             Logger.getLogger(crearBaseDPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Ocurrio un problema al utilizar el metodo \"guardarDatosBD\"");
         }
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

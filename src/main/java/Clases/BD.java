@@ -4,20 +4,32 @@ package Clases;
 import java.util.ArrayList;
 
 
-public class BaseDatos {
+public class BD {
+    int id;
     String nombre;
     String descripcion;
     ArrayList<Tabla> tablas;
 
-    public BaseDatos(String nombre, String descripcion) {
+    public BD(int id, String nombre, String descripcion) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        tablas = new ArrayList<>();
+        
     }
     
     public void addTablas(Tabla tabla){
         tablas.add(tabla);
     }
+    
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }

@@ -1,9 +1,0 @@
-[ {
-  "nombre" : "Banco",
-  "descripcion" : "BD Banco",
-  "tablas" : null
-}, {
-  "nombre" : "Escuela",
-  "descripcion" : "BD Escuela",
-  "tablas" : null
-} ]
