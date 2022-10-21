@@ -41,7 +41,6 @@ public class paginaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         btnMenuSeleccionar = new javax.swing.JMenu();
         btnSeleccionarBDMenu = new javax.swing.JMenuItem();
@@ -58,9 +57,6 @@ public class paginaPrincipal extends javax.swing.JFrame {
         setResizable(false);
 
         contentPanel.setLayout(new java.awt.CardLayout());
-
-        jLabel1.setText("jLabel1");
-        contentPanel.add(jLabel1, "card2");
 
         btnMenuSeleccionar.setText("Base de Datos");
 
@@ -196,6 +192,10 @@ public class paginaPrincipal extends javax.swing.JFrame {
         contentPanel.add(s1, BorderLayout.CENTER);
         contentPanel.revalidate();
         contentPanel.repaint();
+        
+        
+        
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -244,7 +244,6 @@ public class paginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel contentPanel;
     private javax.swing.JMenuItem editarRegistros;
     private javax.swing.JMenuItem editarTabla;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
