@@ -1,21 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaces;
 
-/**
- *
- * @author alema
- */
+import Clases.BD;
+import Clases.ManejoDatos;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+
 public class verBDPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form basesDatos
-     */
+    ManejoDatos md = new ManejoDatos();
+    ArrayList<BD> bds = new ArrayList<>();
+
     public verBDPanel() {
         initComponents();
+
+        try {
+            bds = md.leerDatosBD();
+        } catch (IOException ex) {
+            Logger.getLogger(verBDPanel.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en metodo \"LeerDatosBd\" en verDBPanel");
+        }
+
+        //listaBD = new JList(bds.toArray());
+        String[] lBD = (String[]) bds.toArray();
+        DefaultListModel<String> model = new DefaultListModel<String>();
+        for(String s : lBD) {
+            model.addElement(s);
+        }
+        listaBD = new JList<String>(model);
+
     }
 
     /**
@@ -36,11 +52,6 @@ public class verBDPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Bases de Datos");
 
-        listaBD.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(listaBD);
 
         jButton1.setText("Seleccionar");

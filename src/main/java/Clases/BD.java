@@ -10,6 +10,11 @@ public class BD {
     String descripcion;
     ArrayList<Tabla> tablas;
 
+    public BD() {
+    }
+
+    
+    
     public BD(int id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;

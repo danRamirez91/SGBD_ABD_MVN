@@ -24,27 +24,19 @@ public class crearBaseDPanel extends javax.swing.JPanel {
     int ultimaID;
     int cont;
     int nuevoCont;
-    
+
     public crearBaseDPanel() {
         initComponents();
-        
-            try {
+
+        try {
             bds = md.leerDatosBD();
-            ultimaID = bds.size();
-            BD bd1 = bds.get(ultimaID - 1);
-            cont = bd1.getId();
-            if(cont == -1){nuevoCont=+2;}
-            else
-            nuevoCont = cont + 1;
+
         } catch (IOException ex) {
             Logger.getLogger(crearBaseDPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error en metodo \"leerDatosBD\"");
-            nuevoCont=0;
+
         }
-        
-        
-        
-        
+
     }
 
     /**
@@ -130,9 +122,9 @@ public class crearBaseDPanel extends javax.swing.JPanel {
 
         nombre = nombreTF.getText();
         desc = descTF.getText();
-        int id = nuevoCont+1;
-        
-        bd = new BD(id,nombre, desc);
+        int id = nuevoCont + 1;
+
+        bd = new BD(id, nombre, desc);
         bd.setId(nuevoCont);
 
         bds.add(bd);
