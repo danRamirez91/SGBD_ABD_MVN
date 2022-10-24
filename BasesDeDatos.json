@@ -13,4 +13,9 @@
   "nombre" : "Banco",
   "descripcion" : "BD Banco",
   "tablas" : [ ]
+}, {
+  "id" : 0,
+  "nombre" : "Tec Morelia",
+  "descripcion" : "Base de Datos Tec Morelia",
+  "tablas" : [ ]
 } ]

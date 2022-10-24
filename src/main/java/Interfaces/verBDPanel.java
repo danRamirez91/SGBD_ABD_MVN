@@ -6,15 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 
 public class verBDPanel extends javax.swing.JPanel {
 
     ManejoDatos md = new ManejoDatos();
-    ArrayList<BD> bds = new ArrayList<>();
+    ArrayList<BD> bds;
 
     public verBDPanel() {
+        this.bds = new ArrayList<>();
         initComponents();
 
         try {
@@ -25,13 +24,10 @@ public class verBDPanel extends javax.swing.JPanel {
         }
 
         //listaBD = new JList(bds.toArray());
-        String[] lBD = (String[]) bds.toArray();
-        DefaultListModel<String> model = new DefaultListModel<String>();
-        for(String s : lBD) {
-            model.addElement(s);
+//        String[] lBD = (String[]) bds.toArray();
+        for(BD bd : bds){
+            System.out.println(bd.getNombre());
         }
-        listaBD = new JList<String>(model);
-
     }
 
     /**
@@ -44,53 +40,62 @@ public class verBDPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaBD = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        BDPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(503, 364));
 
         jLabel1.setText("Bases de Datos");
 
-        jScrollPane1.setViewportView(listaBD);
-
         jButton1.setText("Seleccionar");
+
+        javax.swing.GroupLayout BDPanelLayout = new javax.swing.GroupLayout(BDPanel);
+        BDPanel.setLayout(BDPanelLayout);
+        BDPanelLayout.setHorizontalGroup(
+            BDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 491, Short.MAX_VALUE)
+        );
+        BDPanelLayout.setVerticalGroup(
+            BDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 263, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(199, 199, 199)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1))
+                .addContainerGap(206, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(BDPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(25, Short.MAX_VALUE)
+                    .addComponent(BDPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(76, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BDPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listaBD;
     // End of variables declaration//GEN-END:variables
 }
