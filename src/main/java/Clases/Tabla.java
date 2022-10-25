@@ -10,6 +10,18 @@ public class Tabla {
     String descripcion;
     ArrayList<Campo> campos;
     
+    public Tabla(){}
+    
+    public Tabla(String nombre, String descripcion,Campo campo){
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        campos.add(campo);
+    }
+    
+    public Tabla(String nombre,Campo campo){
+        this.nombre = nombre;
+        campos.add(campo);
+    }
 
     public Tabla(int id,String nombre, String descripcion,Campo campo) {
         this.id = id;

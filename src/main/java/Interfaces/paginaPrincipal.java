@@ -5,7 +5,12 @@
  */
 package Interfaces;
 
+import Clases.BD;
 import java.awt.BorderLayout;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import javax.swing.JPanel;
 
 
@@ -19,6 +24,9 @@ public class paginaPrincipal extends javax.swing.JFrame {
     
     public paginaPrincipal() {
         initComponents();
+        
+        //ArrayList<BD> bdTemporal = new ArrayList<>();
+        BD bdTemporal = new BD(); 
         
         verBDPanel p1 = new verBDPanel();
         p1.setSize(503,634);
@@ -183,15 +191,19 @@ public class paginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearBDMenuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-         crearTablaPanel s1 = new crearTablaPanel();
-        s1.setSize(503,634);
-        s1.setLocation(0,0);
-        
-        contentPanel.removeAll();
-        contentPanel.add(s1, BorderLayout.CENTER);
-        contentPanel.revalidate();
-        contentPanel.repaint();
+        try {
+            // TODO add your handling code here:
+            crearTablaPanel s1 = new crearTablaPanel(bdTemporal);
+            s1.setSize(503,634);
+            s1.setLocation(0,0);
+            
+            contentPanel.removeAll();
+            contentPanel.add(s1, BorderLayout.CENTER);
+            contentPanel.revalidate();
+            contentPanel.repaint();
+        } catch (IOException ex) {
+            Logger.getLogger(paginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         
@@ -235,6 +247,8 @@ public class paginaPrincipal extends javax.swing.JFrame {
         
         
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Tablas;

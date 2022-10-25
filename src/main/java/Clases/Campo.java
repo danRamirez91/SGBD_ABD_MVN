@@ -2,12 +2,23 @@
 package Clases;
 
 
-class Campo {
+public class Campo {
     String nombre;
     String descripcion;
     Tipo tipo;
     Dato dato;
 
+    public Campo() {
+    }
+
+    public Campo(String nombre, Tipo tipo, Dato dato) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.dato = dato;
+    }
+
+    
+    
     public Campo(String nombre, String descripcion, Tipo tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;

@@ -11,6 +11,8 @@ public class verBDPanel extends javax.swing.JPanel {
 
     ManejoDatos md = new ManejoDatos();
     ArrayList<BD> bds;
+    
+    
 
     public verBDPanel() {
         this.bds = new ArrayList<>();
@@ -18,11 +20,19 @@ public class verBDPanel extends javax.swing.JPanel {
 
         try {
             bds = md.leerDatosBD();
+            ArrayList<BD> prueba = (ArrayList<BD>) bds;
+            for(BD ob : prueba){
+                comboBoxBDS.addItem(ob.getNombre());
+            }
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(verBDPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error en metodo \"LeerDatosBd\" en verDBPanel");
         }
-
+        
+        
+        
         //listaBD = new JList(bds.toArray());
 //        String[] lBD = (String[]) bds.toArray();
 //        for(BD bd : bds){
@@ -42,22 +52,40 @@ public class verBDPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         BDPanel = new javax.swing.JPanel();
+        comboBoxBDS = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(503, 364));
 
         jLabel1.setText("Bases de Datos");
 
         jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        comboBoxBDS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxBDSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BDPanelLayout = new javax.swing.GroupLayout(BDPanel);
         BDPanel.setLayout(BDPanelLayout);
         BDPanelLayout.setHorizontalGroup(
             BDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BDPanelLayout.createSequentialGroup()
+                .addContainerGap(177, Short.MAX_VALUE)
+                .addComponent(comboBoxBDS, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(164, 164, 164))
         );
         BDPanelLayout.setVerticalGroup(
             BDPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGroup(BDPanelLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(comboBoxBDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -92,9 +120,18 @@ public class verBDPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboBoxBDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxBDSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxBDSActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BDPanel;
+    private javax.swing.JComboBox<String> comboBoxBDS;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
