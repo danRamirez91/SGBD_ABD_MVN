@@ -25,9 +25,9 @@ public class verBDPanel extends javax.swing.JPanel {
 
         //listaBD = new JList(bds.toArray());
 //        String[] lBD = (String[]) bds.toArray();
-        for(BD bd : bds){
-            System.out.println(bd.getNombre());
-        }
+//        for(BD bd : bds){
+//            System.out.println(bd.getNombre());
+//        }
     }
 
     /**
