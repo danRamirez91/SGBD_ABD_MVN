@@ -6,6 +6,7 @@
 package Interfaces;
 
 import Clases.BD;
+import static Interfaces.verBDPanel.indexBD;
 import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -193,7 +194,7 @@ public class paginaPrincipal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         try {
             // TODO add your handling code here:
-            crearTablaPanel s1 = new crearTablaPanel(bdTemporal);
+            crearTablaPanel s1 = new crearTablaPanel(indexBD());
             s1.setSize(503,634);
             s1.setLocation(0,0);
             

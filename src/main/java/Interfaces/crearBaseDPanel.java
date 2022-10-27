@@ -29,12 +29,14 @@ public class crearBaseDPanel extends javax.swing.JPanel {
         initComponents();
 
         try {
-            bds = md.leerDatosBD();
+            bds = md.leerDatosBD2();
 
         } catch (IOException ex) {
             Logger.getLogger(crearBaseDPanel.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error en metodo \"leerDatosBD\"");
+            System.out.println("Error en metodo \"leerDatosBD2\"");
 
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(crearBaseDPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -122,7 +124,7 @@ public class crearBaseDPanel extends javax.swing.JPanel {
 
         nombre = nombreTF.getText();
         desc = descTF.getText();
-        int id = nuevoCont + 1;
+        int id = bds.size()+1;
 
         bd = new BD(id, nombre, desc);
         bd.setId(nuevoCont);
@@ -130,7 +132,12 @@ public class crearBaseDPanel extends javax.swing.JPanel {
         bds.add(bd);
 
         try {
-            md.guardarDatosBD(bds);
+          boolean guardado = md.guardarDatosBD2(bds);
+          if(guardado){
+              nombreTF.setText("");
+              descTF.setText("");
+          }
+          
         } catch (IOException ex) {
             Logger.getLogger(crearBaseDPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Ocurrio un problema al utilizar el metodo \"guardarDatosBD\"");

@@ -2,6 +2,8 @@ package Interfaces;
 
 import Clases.BD;
 import Clases.ManejoDatos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -11,28 +13,32 @@ public class verBDPanel extends javax.swing.JPanel {
 
     ManejoDatos md = new ManejoDatos();
     ArrayList<BD> bds;
-    
-    
+    static int bdIndex;
 
     public verBDPanel() {
-        this.bds = new ArrayList<>();
+        this.bds = new ArrayList<BD>();
         initComponents();
 
         try {
-            bds = md.leerDatosBD();
-            ArrayList<BD> prueba = (ArrayList<BD>) bds;
-            for(BD ob : prueba){
-                comboBoxBDS.addItem(ob.getNombre());
+            bds = md.leerDatosBD2();
+            //ArrayList<BD> prueba = (ArrayList<BD>) bds;
+            for (int i = 0; i < bds.size(); i++) {
+                comboBoxBDS.addItem((bds.get(i)).getNombre());
             }
-            
-            
+
+            System.out.println(bds.get(0));
+            System.out.println(bds);
+            System.out.println(bds.get(0).getClass());
+
         } catch (IOException ex) {
             Logger.getLogger(verBDPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error en metodo \"LeerDatosBd\" en verDBPanel");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(verBDPanel.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en Metodo leerDatosBD2 en verBDPanel");
         }
-        
-        
-        
+        //System.out.println(bds.get(bdIndex).getNombre());
+
         //listaBD = new JList(bds.toArray());
 //        String[] lBD = (String[]) bds.toArray();
 //        for(BD bd : bds){
@@ -50,7 +56,7 @@ public class verBDPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSeleccionarBD = new javax.swing.JButton();
         BDPanel = new javax.swing.JPanel();
         comboBoxBDS = new javax.swing.JComboBox<>();
 
@@ -58,10 +64,10 @@ public class verBDPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Bases de Datos");
 
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionarBD.setText("Seleccionar");
+        btnSeleccionarBD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSeleccionarBDActionPerformed(evt);
             }
         });
 
@@ -95,7 +101,7 @@ public class verBDPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(199, 199, 199)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnSeleccionarBD)
                     .addComponent(jLabel1))
                 .addContainerGap(206, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +116,7 @@ public class verBDPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSeleccionarBD)
                 .addGap(21, 21, 21))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -120,19 +126,35 @@ public class verBDPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSeleccionarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarBDActionPerformed
+        ActionListener action = new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                bdIndex = comboBoxBDS.getSelectedIndex();
+//                System.out.println(bdIndex);
+
+            }
+        };
+        comboBoxBDS.addActionListener(action);
+        System.out.println(bdIndex);
+    }//GEN-LAST:event_btnSeleccionarBDActionPerformed
 
     private void comboBoxBDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxBDSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxBDSActionPerformed
 
+    static int indexBD() {
+        int index = 0;
+        index = bdIndex;
+
+        return index;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BDPanel;
+    private javax.swing.JButton btnSeleccionarBD;
     private javax.swing.JComboBox<String> comboBoxBDS;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

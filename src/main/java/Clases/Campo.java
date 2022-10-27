@@ -1,8 +1,10 @@
 
 package Clases;
 
+import java.io.Serializable;
 
-public class Campo {
+
+public class Campo implements Serializable {
     String nombre;
     String descripcion;
     Tipo tipo;
@@ -15,6 +17,11 @@ public class Campo {
         this.nombre = nombre;
         this.tipo = tipo;
         this.dato = dato;
+    }
+
+    public Campo(String nombre, Tipo tipo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
     }
 
     

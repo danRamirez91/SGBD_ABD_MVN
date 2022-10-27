@@ -11,6 +11,9 @@ import Clases.ManejoDatos;
 import Clases.Tabla;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
     
 
@@ -18,11 +21,35 @@ public class crearTablaPanel extends javax.swing.JPanel {
 
     ManejoDatos md = new ManejoDatos();
     ArrayList<BD> bds = new ArrayList<>();
-    
-    public crearTablaPanel() throws IOException {
+    int ind;
+    public crearTablaPanel(int indexBD) throws IOException {
         initComponents();
-        
-        bds = md.leerDatosBD();
+        ind=indexBD;
+        try {
+            bds = md.leerDatosBD2();
+//            String nombre="",desc="";
+//            int campos;
+//            Tabla tabla = new Tabla();
+//            if((!tablaNombreTF.getText().isEmpty())&&(!tablaCamposTF.getText().isEmpty())){
+//                nombre = tablaNombreTF.getText();
+//                desc = tablaDescTF.getText();
+//                campos = Integer.parseInt(tablaCamposTF.getText());
+//                
+//                for(int i = 1;i<=campos;i++){
+//                    Campo campo = new Campo();
+//                    tabla.addCampo(campo);
+//                    
+//                }System.out.println("Campos Agregados.");
+//                
+//            }
+//            tabla.setNombre(nombre);
+//            tabla.setDescripcion(desc);
+//            
+//            bds.get(indexBD).addTablas(tabla);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(crearTablaPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         
@@ -116,23 +143,38 @@ public class crearTablaPanel extends javax.swing.JPanel {
 
     private void btnCrearTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTablaActionPerformed
         
-        Tabla nuevaTabla = new Tabla();
-        int id=0;
-        String nombre="";
-        String descripcion="";
-        int campos=0;
-        
-        for(int i=1;i<=campos;i++){
-            Campo campo = new Campo();
-            nuevaTabla.addCampo(campo);
+        String nombre="",desc="";
+            int campos;
+            Tabla tabla = new Tabla();
+            if((!tablaNombreTF.getText().isEmpty())&&(!tablaCamposTF.getText().isEmpty())){
+                nombre = tablaNombreTF.getText();
+                desc = tablaDescTF.getText();
+                campos = Integer.parseInt(tablaCamposTF.getText());
+                
+                for(int i = 1;i<=campos;i++){
+                    Campo campo = new Campo();
+                    tabla.addCampo(campo);
+                    
+                }System.out.println("Campos Agregados.");
+                
+            }
+            tabla.setNombre(nombre);
+            tabla.setDescripcion(desc);
+            
+            bds.get(ind).addTablas(tabla);
+            
+        try {
+            md.guardarDatosBD2(bds);
+            System.out.println("Tabla Guardada");
+            tablaNombreTF.setText("");
+            tablaDescTF.setText("");
+            tablaCamposTF.setText("");
+            JOptionPane.showMessageDialog(null,"Tabla Guardada");
+                   
+        } catch (IOException ex) {
+            Logger.getLogger(crearTablaPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
-        nuevaTabla.setNombre(nombre);
-        
-        bds.get(0).addTablas(nuevaTabla);
+            
     }//GEN-LAST:event_btnCrearTablaActionPerformed
 
 

@@ -4,6 +4,10 @@ package Clases;
 class Permiso {
     String nombre;
     TipoPermiso tipo;
+    
+    public Permiso(){
+    
+    }
 
     public Permiso(String nombre, TipoPermiso tipo) {
         this.nombre = nombre;

@@ -1,10 +1,12 @@
 
 package Clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class BD {
+
+public class BD implements Serializable {
     int id;
     String nombre;
     String descripcion;

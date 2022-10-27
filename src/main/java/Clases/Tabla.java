@@ -1,14 +1,15 @@
 
 package Clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Tabla {
+public class Tabla implements Serializable {
     
     int id;
     String nombre;
     String descripcion;
-    ArrayList<Campo> campos;
+    ArrayList<Campo> campos = new ArrayList<Campo>();
     
     public Tabla(){}
     
