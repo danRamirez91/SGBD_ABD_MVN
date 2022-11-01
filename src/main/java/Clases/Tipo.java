@@ -5,11 +5,13 @@
  */
 package Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alema
  */
-class Tipo {
+public class Tipo implements Serializable{
     String nombre;
     
     

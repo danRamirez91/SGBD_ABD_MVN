@@ -1,6 +1,8 @@
 package Clases;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     String id;
     String contrasena;
     String nombre;

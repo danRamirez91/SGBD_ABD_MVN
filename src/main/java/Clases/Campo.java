@@ -25,7 +25,6 @@ public class Campo implements Serializable {
     }
 
     
-    
     public Campo(String nombre, String descripcion, Tipo tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;

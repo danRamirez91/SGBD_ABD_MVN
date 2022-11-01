@@ -5,7 +5,9 @@
  */
 package Clases;
 
-class TipoPermiso {
+import java.io.Serializable;
+
+public class TipoPermiso implements Serializable{
     String nombre;
     
 }

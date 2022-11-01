@@ -5,17 +5,44 @@
  */
 package Interfaces;
 
+import Clases.BD;
+import Clases.ManejoDatos;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alema
  */
 public class verTablasPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form verTablasPanel
-     */
-    public verTablasPanel() {
+    ArrayList<BD> bds = new ArrayList<BD>();
+    
+    public verTablasPanel() throws IOException{
         initComponents();
+        ManejoDatos md = new ManejoDatos();
+        DefaultTableModel model = new DefaultTableModel();
+        tablaVer.setModel(model);
+        try {
+            bds = md.leerDatosBD2();
+            
+//            for(BD bd : bds){
+//                Object[] datos = {bd.getNombre(),bd.getDescripcion()};
+//                
+//                model.add(datos);
+//            }
+//            
+
+
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(verTablasPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     /**
@@ -28,28 +55,32 @@ public class verTablasPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaVer = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaVer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombre", "Tipo", "", "Title 5"
+                "Nombre", "Descripcion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(20);
-        }
+        jScrollPane1.setViewportView(tablaVer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,9 +100,10 @@ public class verTablasPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaVer;
     // End of variables declaration//GEN-END:variables
 }

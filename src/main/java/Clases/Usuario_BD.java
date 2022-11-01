@@ -1,7 +1,9 @@
 package Clases;
 
+import java.io.Serializable;
 
-public class Usuario_BD {
+
+public class Usuario_BD implements Serializable {
     String BD;
     String usuario;
 

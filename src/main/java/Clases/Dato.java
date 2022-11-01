@@ -1,8 +1,10 @@
 
 package Clases;
 
+import java.io.Serializable;
 
-class Dato {
+
+class Dato implements Serializable{
     Object valor;
 
     public Dato(Object valor) {

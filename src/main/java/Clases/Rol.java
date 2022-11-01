@@ -1,8 +1,9 @@
 package Clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class Rol {
+class Rol implements Serializable{
     String nombre;
     ArrayList<Permiso> Permisos;
 

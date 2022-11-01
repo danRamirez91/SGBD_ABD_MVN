@@ -13,7 +13,7 @@ public class verBDPanel extends javax.swing.JPanel {
 
     ManejoDatos md = new ManejoDatos();
     ArrayList<BD> bds;
-    static int bdIndex;
+    static int bdIndex=-1;
 
     public verBDPanel() {
         this.bds = new ArrayList<BD>();

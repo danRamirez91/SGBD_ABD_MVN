@@ -149,15 +149,23 @@ public class paginaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTablaActionPerformed
-        // TODO add your handling code here:
-       verTablasPanel t1 = new verTablasPanel();
-        t1.setSize(503,634);
-        t1.setLocation(0,0);
-        
-        contentPanel.removeAll();
-        contentPanel.add(t1, BorderLayout.CENTER);
-        contentPanel.revalidate();
-        contentPanel.repaint(); 
+        try {                                            
+            // TODO add your handling code here:
+            verTablasPanel t1 = new verTablasPanel();
+            
+                t1 = new verTablasPanel();
+                t1.setSize(503, 634);
+                t1.setLocation(0, 0);
+            
+            contentPanel.removeAll();
+            contentPanel.add(t1, BorderLayout.CENTER);
+            contentPanel.revalidate();
+            contentPanel.repaint();
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(paginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_editarTablaActionPerformed
